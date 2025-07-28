@@ -23,7 +23,7 @@ import nodejsLogo from "@/public/nodejs.png"
 import awsLogo from "@/public/aws.png"
 import mysqlLogo from "@/public/mysql.png"
 
-export const tagLogos: { [key:string]:any } = {
+export const tagLogos: Record<string, StaticImageData> = {
   "Python": pythonLogo,
   React: ReactLogo,
   TypeScript: TypeScriptLogo,
