@@ -1,12 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { projectsData, tagLogos } from "@/lib/data";
+import {tagLogos } from "@/lib/data";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
 import { FaGithubSquare } from "react-icons/fa";
-import { useSectionInView } from "@/lib/hooks";
 
 interface ProjectProps {
   title: string;

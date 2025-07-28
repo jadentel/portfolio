@@ -1,8 +1,7 @@
 "use client";
 
-import SectionHeading from './section-heading';
 import { useSectionInView } from '@/lib/hooks';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
 import UoLLogo from '@/public/leeds.jpg';
 import { motion } from "framer-motion";
@@ -37,7 +36,6 @@ const tagItem = {
 
 export default function Education() {
   const { ref } = useSectionInView("Education");
-  const [isSystemDark, setIsSystemDark] = useState(false);
 
   return (
     <section id="education" className="scroll-mt-28 mb-28 sm:mb-40" ref={ref}>
