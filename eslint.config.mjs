@@ -10,7 +10,16 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Include base config from Next.js
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // Custom overrides
+  {
+    files: ["**/*.tsx", "**/*.ts", "**/*.js"],
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

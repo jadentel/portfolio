@@ -1,7 +1,7 @@
 "use client";
 
 import { useSectionInView } from '@/lib/hooks';
-import React, { useState } from "react";
+import React from "react";
 import Image from 'next/image';
 import UoLLogo from '@/public/leeds.jpg';
 import { motion } from "framer-motion";
