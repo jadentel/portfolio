@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import rmtdevImg from "@/public/rmtdev.png";
+import leaningTechImg from "@/public/leaningTechImg.png"
 import DissertationImg from "@/public/dissertation.png"
 import pythonLogo from "@/public/python.png"
 import ReactLogo from "@/public/react.png"
@@ -81,6 +82,14 @@ interface ExperienceItem {
 }
 
 export const experiencesData: ExperienceItem[] = [
+  {
+  title: "Intern Software Engineer – Developer Experience & Relations",
+  location: "Leaning Technologies · Remote",
+  description:
+     "Worked as part of the Developer Experience team, helping build and maintain developer-facing websites and supporting the wider Leaning Technologies community. I helped organise hackathons and developer events, managed and moderated the developer Discord, curated technical content, and kept an eye on community feedback to help improve how developers engage with the company’s tools.",
+  iconImage: leaningTechImg,
+  date: "2024 – Present",
+  },
   {
     title: "Linux Challenge Terminal – LeaningTech Hackathon 2024",
     location: "Nexus, Leeds",
