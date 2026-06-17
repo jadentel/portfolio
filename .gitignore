@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# confidential / not for the public site
+Group_Project-3.pdf
+Submission.pdf
+irl_example/
+.claude/
+SKILL.md

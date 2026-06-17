@@ -9,7 +9,7 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
-import selfie from "@/public/image.png"
+import selfie from "@/public/image.png";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
@@ -19,101 +19,138 @@ export default function Intro() {
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-24 w-full max-w-[56rem] scroll-mt-[100rem]"
     >
-      <div className="flex items-center justify-center">
-        <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "tween",
-              duration: 0.2,
-            }}
-          >
-            <Image
-              src={selfie}
-              alt="Jaden"
-              width="192"
-              height="192"
-              quality="95"
-              priority={true}
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
-          </motion.div>
+      {/* Status badge */}
+      <motion.div
+        className="flex items-center gap-2.5 mb-6"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <span className="relative flex h-2 w-2 flex-shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff6b2b] opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff6b2b]" />
+        </span>
+        <span className="text-xs font-mono uppercase tracking-widest text-gray-600 dark:text-gray-400">
+          Graduating 2026 · Currently at Leaning Technologies · Open to opportunities
+        </span>
+      </motion.div>
 
-          <motion.span
-            className="absolute bottom-0 right-0 text-4xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-            }}
-          >
-            👋
-          </motion.span>
+      <div className="flex items-start justify-between gap-8">
+        {/* Name block */}
+        <div className="flex-1 min-w-0">
+          <div className="overflow-hidden">
+            <motion.h1
+              className="font-black leading-[0.9] tracking-tighter"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <span className="block text-[clamp(3.2rem,9vw,7rem)] text-gray-900 dark:text-white">
+                Jaden
+              </span>
+              <span className="block text-[clamp(3.2rem,9vw,7rem)] text-[#ff6b2b]">
+                Tellis.
+              </span>
+            </motion.h1>
+          </div>
         </div>
+
+        {/* Profile photo */}
+        <motion.div
+          className="relative hidden sm:block flex-shrink-0 mt-1"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
+        >
+          <Image
+            src={selfie}
+            alt="Jaden"
+            width={192}
+            height={192}
+            quality={95}
+            priority
+            className="w-36 h-36 md:w-44 md:h-44 rounded-2xl object-cover border-2 border-[#ff6b2b]"
+          />
+          <div className="absolute -bottom-2 -right-2 w-full h-full rounded-2xl border-2 border-[#ff6b2b] opacity-20 -z-10" />
+        </motion.div>
       </div>
 
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <span className="font-bold">Hello, I'm Jaden.</span> I'm an{" "}
-        <span className="font-bold">MEng Computer Science student</span>{" "}
-        at the {" "}
-        <span className="underline">University of Leeds</span>.{" "}
-        I build and maintain full-stack systems from modern frontends to event-driven backends and infrastructure{" "}
-        with a focus on {" "}
-        <span className="font-bold"> A.I and Web-development.</span>
-
-      </motion.h1>
-
+      {/* Divider + role */}
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
+        className="flex items-center gap-4 mt-6 mb-5"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.25, duration: 0.4 }}
+      >
+        <div className="h-px flex-1 bg-gray-300 dark:bg-white/10" />
+        <span className="text-[0.7rem] font-mono uppercase tracking-widest text-gray-600 dark:text-gray-500 whitespace-nowrap">
+          MEng Computer Science · University of Leeds
+        </span>
+        <div className="h-px flex-1 bg-gray-300 dark:bg-white/10" />
+      </motion.div>
+
+      {/* Description */}
+      <motion.p
+        className="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-[42rem] leading-relaxed mb-8"
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
+        transition={{ delay: 0.3, duration: 0.4 }}
+      >
+        MEng Computer Science student specialising in computer vision, deep
+        learning, and full-stack web development — building everything from
+        training-free 3D reconstruction pipelines and CNN/RNN image captioning
+        models to React and Astro web applications, distributed MPI systems, and
+        developer tooling for WebAssembly platforms. Comfortable across the full
+        stack, from{" "}
+        <span className="text-[#ff6b2b] font-medium">
+          PyTorch model pipelines evaluated against state-of-the-art baselines
+        </span>{" "}
+        to TypeScript frontends shipped to real users.
+      </motion.p>
+
+      {/* CTAs */}
+      <motion.div
+        className="flex flex-wrap items-center gap-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35, duration: 0.4 }}
       >
         <Link
           href="#contact"
-          className="group bg-gray-900 dark:bg-white/10 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="flex items-center gap-2 bg-[#ff6b2b] text-black px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#e85a1e] transition-all hover:scale-105 active:scale-100"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
           }}
         >
-          Contact me here{" "}
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
+          Contact me{" "}
+          <BsArrowRight className="group-hover:translate-x-1 transition" />
         </Link>
 
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
           href="/CV.pdf"
           download
+          className="flex items-center gap-2 border border-gray-300 dark:border-white/15 text-gray-700 dark:text-gray-200 px-5 py-2.5 rounded-full font-semibold text-sm hover:border-[#ff6b2b] hover:text-[#ff6b2b] transition-all hover:scale-105 active:scale-100"
         >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
+          Download CV <HiDownload />
         </a>
 
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/jaden-t-864773207/"
           target="_blank"
+          rel="noreferrer"
+          className="border border-gray-300 dark:border-white/15 text-gray-600 dark:text-gray-400 p-2.5 rounded-full hover:border-[#ff6b2b] hover:text-[#ff6b2b] transition-all hover:scale-105"
         >
           <BsLinkedin />
         </a>
 
         <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://github.com/jadentel"
           target="_blank"
+          rel="noreferrer"
+          className="text-[1.15rem] border border-gray-300 dark:border-white/15 text-gray-600 dark:text-gray-400 p-2.5 rounded-full hover:border-[#ff6b2b] hover:text-[#ff6b2b] transition-all hover:scale-105"
         >
           <FaGithubSquare />
         </a>
@@ -121,4 +158,3 @@ export default function Intro() {
     </section>
   );
 }
-

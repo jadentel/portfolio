@@ -1,17 +1,57 @@
 @import "tailwindcss";
 
+/* Tailwind v4 ignores `darkMode: "class"` in the JS config unless told to.
+   Drive `dark:` utilities off the `.dark` class on <html> (set by theme-context)
+   instead of the OS `prefers-color-scheme` media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --line-color: #e5e7eb;
+:root {
+  --accent: #ff6b2b;
+  --line-color: rgba(0, 0, 0, 0.08);
+  --bg: #f5f2ec;
+  --text: #111111;
+  --text-muted: #374151;
+  --dot-color: rgba(0, 0, 0, 0.07);
 }
 
 html.dark {
-  --line-color: rgba(255, 255, 255, 0.2);
+  --line-color: rgba(255, 255, 255, 0.08);
+  --bg: #0c0c0c;
+  --text: #ededed;
+  --text-muted: #9ca3af;
+  --dot-color: rgba(255, 255, 255, 0.07);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Orange atmosphere glow — dark mode only */
+html.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 35% at 50% -5%,
+    rgba(255, 107, 43, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 .borderBlack {
-  @apply border border-black/10 dark:border-white/20;
+  @apply border border-black/10 dark:border-white/10;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px currentColor;
+  color: transparent;
 }

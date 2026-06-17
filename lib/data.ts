@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import rmtdevImg from "@/public/rmtdev.png";
 import leaningTechImg from "@/public/leaningTechImg.png"
 import DissertationImg from "@/public/dissertation.png"
@@ -9,9 +8,9 @@ import TailWindLogo from "@/public/tailwind.png"
 import NextJSLogo from "@/public/nextjs.png"
 import DockerLogo from "@/public/docker.png"
 import webvmImg from "@/public/webvm.png";
-import vodafoneImg from "@/public/vodafone.png"
-import LinuxImg from "@/public/LinuxImg.png"
+import reconstructionImg from "@/public/reconstruction.png";
 import { StaticImageData } from "next/image";
+import type { ExperienceItem } from "./types";
 import ClaudeLogo from "@/public/Claude.png"
 import xtermjsLogo from "@/public/xterm.png"
 import cheerpxLogo from "@/public/cheerpx.png"
@@ -55,12 +54,12 @@ export const links = [
     hash: "#projects",
   },
   {
-    name: "Skills",
-    hash: "#skills",
-  },
-  {
     name: "Experience",
     hash: "#experience",
+  },
+  {
+    name: "Skills",
+    hash: "#skills",
   },
   {
     name: "Education",
@@ -72,26 +71,20 @@ export const links = [
   },
 ] as const;
 
-interface ExperienceItem {
-  title: string;
-  location: string;
-  description: string;
-  date: string;
-  icon?: ReactNode;
-  iconImage?: StaticImageData;
-}
-
 export const experiencesData: ExperienceItem[] = [
   {
-  title: "Intern Software Engineer – Developer Experience & Relations",
-  location: "Leaning Technologies · Remote",
-  description:
-     "Worked as part of the Developer Experience team, helping build and maintain developer-facing websites and supporting the wider Leaning Technologies community. I helped organise hackathons and developer events, managed and moderated the developer Discord, curated technical content, and kept an eye on community feedback to help improve how developers engage with the company’s tools.",
-  iconImage: leaningTechImg,
-  date: "2024 – Present",
+    title: "Intern Software Engineer – Developer Experience & Relations",
+    location: "Leaning Technologies · Leeds",
+    description: [
+      "Built and maintained developer-facing websites, moderated the developer Discord, curated technical content, and organised community events to improve developer engagement with Leaning Technologies’ tools.",
+      "BrowserPod Workshop — Designed and delivered a technical workshop for Leeds AI Society built around a Tetris scaffold: attendees completed five BrowserPod API tasks to produce a working game with a shareable Portal URL and QR code. Built the entire thing independently, including repo scaffolding and student guide. The scaffold was subsequently adopted as part of the official BrowserPod demo.",
+      "AI-IN-THE-BOX Hackathon — Organised and built the infrastructure for a 60+ person in-person hackathon: Astro/Tailwind landing page, registration and submission portal with Google Sheets integration. Co-hosted the event with Leeds AI Society.",
+    ],
+    iconImage: leaningTechImg,
+    date: "2024 – Present",
   },
   {
-    title: "Linux Challenge Terminal – LeaningTech Hackathon 2024",
+    title: "3rd Place – Linux Challenge Terminal · LeaningTech Hackathon 2025",
     location: "Nexus, Leeds",
     description:
       "Built an interactive web-based Linux learning platform using CheerpX, xterm.js, and Claude AI. The app delivers a full Linux terminal in the browser, letting users complete real-time challenges with AI-driven guidance and persistent environments. Integrated Claude for intelligent bash command support, and used Tailwind and Next.js for a responsive UI.",
@@ -99,23 +92,25 @@ export const experiencesData: ExperienceItem[] = [
     date: "2024",
   },
 
-  {
-    title: "Vodafone Intern",
-    location: "Remote, UK",
-    description:
-      "Designed and prototyped an IoT device while collaborating in a cross-functional team to align user needs with technical constraints, gaining hands-on experience in user-centered design and product development.",
-    iconImage: vodafoneImg,
-    date: "Feb",
-  },
 ] as const;
 
 export const projectsData = [
   {
+    title: "3D Reconstruction using Hybrid Depth and Tracking [Group Project]",
+    description:
+      "Built a modular monocular 3D reconstruction pipeline combining Depth Anything V3 for dense metric depth estimation, CoTracker3 for long-range 2D point tracking, IRLS rigidity filtering, and Huber-robust global bundle adjustment with Open3D TSDF volumetric fusion — producing textured meshes and coloured point clouds from a single smartphone video. Benchmarked on Replica, ScanNet, and Tanks and Temples, achieving F-Score@5cm of 71.0%, 35.8%, and 51.7% respectively.",
+    tags: ["Python", "PyTorch", "Computer Vision", "Open3D"],
+    imageUrl: reconstructionImg,
+    detailUrl: "/projects/reconstruction",
+    detailLabel: "Explore pipeline →",
+  },
+  {
     title: "Protein Folding Prediction with Genetic Algorithms & Bayesian Inference [Dissertation]",
     description:
       "Developed a protein folding simulator using a Genetic Algorithm enhanced with Bayesian Optimization. Applied the 2D HP lattice model with custom mutation operators and tuned hyperparameters to improve folding accuracy, energy efficiency, and structural diversity.",
-    tags: ["React", "Python", "Next.js","Machine Learning","A.I"],
+    tags: ["React", "Python", "Next.js", "Machine Learning", "A.I"],
     imageUrl: DissertationImg,
+    detailUrl: "/projects/protein-folding",
     gitHubUrl: "https://github.com/jadentel/GeneticAlgorithm-2.0",
   },
   {
@@ -127,31 +122,31 @@ export const projectsData = [
     gitHubUrl: "https://github.com/jadentel/Forza-portfolio"
   },
 
-  {
-  title: "Linux Challenge Terminal – LeaningTech Hackathon 2025",
-  description:
-    "Built an interactive Linux learning platform using CheerpX, xterm.js, and the Claude API, enabling users to complete real-time shell challenges in a full browser-based terminal with AI-driven assistance, persistent environments, and a responsive UI via Tailwind and Next.js.",
-  tags: ["Next.js", "Cheerpx", "xterm.js", "Claude", "Tailwind"],
-  imageUrl: LinuxImg,
-  gitHubUrl: "https://github.com/jadentel/webvm",
-  },
-
 ];
 
-// lib/data.ts
 export const skillsData = {
+  "Machine Learning": [
+    { name: "PyTorch" },
+    { name: "Deep Learning" },
+    { name: "Computer Vision" },
+    { name: "CNNs" },
+    { name: "RNNs" },
+    { name: "Bayesian Optimisation" },
+  ],
   Backend: [
     { name: "TypeScript" },
-    { name: "PHP" },
-    { name: "C#" },
     { name: "Python" },
     { name: "Node.js" },
+    { name: "C#" },
+    { name: "PHP" },
     { name: "MySQL" },
     { name: "REST APIs" },
+    { name: "MPI" },
   ],
   Frontend: [
     { name: "React" },
     { name: "Next.js" },
+    { name: "Astro" },
     { name: "Redux" },
     { name: "Tailwind" },
     { name: "Responsive Design" },
